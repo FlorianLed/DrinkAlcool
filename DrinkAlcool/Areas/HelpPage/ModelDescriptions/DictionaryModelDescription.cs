@@ -1,0 +1,6 @@
+namespace DrinkAlcool.Areas.HelpPage.ModelDescriptions
+{
+    public class DictionaryModelDescription : KeyValuePairModelDescription
+    {
+    }
+}
