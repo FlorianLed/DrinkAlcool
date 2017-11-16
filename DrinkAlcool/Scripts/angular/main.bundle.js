@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/accueil/accueil.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n"
+module.exports = "<app-header></app-header>\r\n"
 
 /***/ }),
 
@@ -75,6 +75,75 @@ AccueilComponent = __decorate([
 ], AccueilComponent);
 
 //# sourceMappingURL=accueil.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/admin.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/admin.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (submit)=\"createProduct()\">\r\n    <div class=\"form-group\">\r\n      <div class=\"row\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Nom du Produit\" name=\"nom\" [(ngModel)]=\"tmpProduit.nom\" required>\r\n        <input type=\"number\" class=\"form-control\" placeholder=\"Prix\" name=\"prix\" [(ngModel)]=\"tmpProduit.prix\" required>\r\n        <input type=\"number\" class=\"form-control\" name=\"stock\" placeholder=\"Stock\" [(ngModel)]=\"tmpProduit.stock\"  required>\r\n        <input type=\"text\" class=\"form-control\" name=\"url\" placeholder=\"URL image\" [(ngModel)]=\"tmpProduit.urlImage\" required>\r\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!formulaire.form.valid\">Valider</button>\r\n      </div>\r\n    </div>\r\n    {{listeProduit|json}}\r\n  </form>\r\n</div>\r\n\r\n<div class=\"container\">\r\n  <table class=\"table table-bordered\" style=\"width:100%\">\r\n    <thead>\r\n    <tr>\r\n      <th class=\"col-sm-3\">Nom du produit</th>\r\n      <th class=\"col-sm-3\">Image</th>\r\n      <th class=\"col-sm-3\">Prix</th>\r\n      <th class=\"col-sm-3\">Stock</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let produit of listeProduit; index as i;\">\r\n        <td class=\"col-sm-3\" class=\"container-fluid bg-3 text-center\">{{produit.nom}}</td>\r\n        <td class=\"col-sm-3\" height=\"20px\"><img [src]=\" produit.urlImage\" class=\"img-responsive\" alt=\"Image\"/></td>\r\n        <td class=\"col-sm-3\">{{produit.prix}}</td>\r\n        <td class=\"col-sm-3\">{{produit.stock}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/admin/admin.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__produit__ = __webpack_require__("../../../../../src/app/produit.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdminComponent = (function () {
+    function AdminComponent() {
+        this.tmpProduit = new __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */]();
+        this.listeProduit = [];
+    }
+    AdminComponent.prototype.ngOnInit = function () {
+    };
+    AdminComponent.prototype.createProduct = function () {
+        this.listeProduit.push(this.tmpProduit);
+        this.tmpProduit = new __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */]();
+    };
+    return AdminComponent;
+}());
+AdminComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-admin',
+        template: __webpack_require__("../../../../../src/app/admin/admin.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/admin/admin.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AdminComponent);
+
+//# sourceMappingURL=admin.component.js.map
 
 /***/ }),
 
@@ -149,6 +218,9 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__ = __webpack_require__("../../../../../src/app/accueil/accueil.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__inscription_inscription_component__ = __webpack_require__("../../../../../src/app/inscription/inscription.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__admin_admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__ = __webpack_require__("../../../../../src/app/utilisateur-manager-service.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -165,30 +237,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var routes = [
     {
-        path: "accueil", component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
+        path: 'accueil', component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
     },
     {
-        path: "catégorie", component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
+        path: 'catégorie', component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
     },
     {
-        path: "à_propos", component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
+        path: 'à_propos', component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
     },
     {
-        path: "mon_panier", component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
+        path: 'mon_panier', component: __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */]
     },
     {
-        path: "header", component: __WEBPACK_IMPORTED_MODULE_3__header_header_component__["a" /* HeaderComponent */]
+        path: 'header', component: __WEBPACK_IMPORTED_MODULE_3__header_header_component__["a" /* HeaderComponent */]
     },
     {
-        path: "connexion", component: __WEBPACK_IMPORTED_MODULE_4__connexion_connexion_component__["a" /* ConnexionComponent */]
+        path: 'connexion', component: __WEBPACK_IMPORTED_MODULE_4__connexion_connexion_component__["a" /* ConnexionComponent */]
     },
     {
-        path: "inscription", component: __WEBPACK_IMPORTED_MODULE_9__inscription_inscription_component__["a" /* InscriptionComponent */]
+        path: 'inscription', component: __WEBPACK_IMPORTED_MODULE_9__inscription_inscription_component__["a" /* InscriptionComponent */]
     },
     {
-        path: "", redirectTo: "/accueil", pathMatch: "full"
+        path: 'admin', component: __WEBPACK_IMPORTED_MODULE_10__admin_admin_component__["a" /* AdminComponent */]
+    },
+    {
+        path: '', redirectTo: '/accueil', pathMatch: 'full'
     }
 ];
 var AppModule = (function () {
@@ -204,14 +282,16 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__connexion_connexion_component__["a" /* ConnexionComponent */],
             __WEBPACK_IMPORTED_MODULE_8__accueil_accueil_component__["a" /* AccueilComponent */],
             __WEBPACK_IMPORTED_MODULE_9__inscription_inscription_component__["a" /* InscriptionComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__admin_admin_component__["a" /* AdminComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes)
+            __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes),
+            __WEBPACK_IMPORTED_MODULE_12__angular_http__["b" /* HttpModule */]
         ],
-        providers: [],
+        providers: [__WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -374,6 +454,7 @@ module.exports = "<div class=\"container\">\r\n  <br>\r\n  <form class=\"form-ho
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InscriptionComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utilisateur__ = __webpack_require__("../../../../../src/app/utilisateur.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utilisateur_manager_service_service__ = __webpack_require__("../../../../../src/app/utilisateur-manager-service.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -385,27 +466,220 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var InscriptionComponent = (function () {
-    function InscriptionComponent() {
-        this.tmpInscription = new __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */]();
+    function InscriptionComponent(utilisateurService) {
+        this.utilisateurService = utilisateurService;
+        this.tmpInscription = '';
+        this.todosChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     InscriptionComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.utilisateurService.getAllTodos().subscribe(function (u) {
+            _this.u = __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */].fromJSON(u);
+            _this.emitUtilisateur();
+        });
+    };
+    InscriptionComponent.prototype.emitUtilisateur = function () {
+        this.todosChange.next(this.u);
     };
     InscriptionComponent.prototype.creerUtilisateur = function () {
-        this.tmpInscription = new __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */]();
+        var tmpUtilisateur = new __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */](this.tmpInscription);
+        this
+            .utilisateurService
+            .createUtilisateur(tmpUtilisateur)
+            .subscribe(function (u) { return tmpUtilisateur.id = __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */].fromJSON(u).id; });
+        this.tmpInscription = '';
+        this.emitUtilisateur();
     };
     return InscriptionComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], InscriptionComponent.prototype, "todosChange", void 0);
 InscriptionComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-inscription',
         template: __webpack_require__("../../../../../src/app/inscription/inscription.component.html"),
         styles: [__webpack_require__("../../../../../src/app/inscription/inscription.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */]) === "function" && _b || Object])
 ], InscriptionComponent);
 
+var _a, _b;
 //# sourceMappingURL=inscription.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/produit.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Produit; });
+var Produit = (function () {
+    function Produit(nom, prix, stock, urlImage, description, pourcentage) {
+        if (nom === void 0) { nom = ''; }
+        if (prix === void 0) { prix = 0; }
+        if (stock === void 0) { stock = 0; }
+        if (urlImage === void 0) { urlImage = ''; }
+        if (description === void 0) { description = ''; }
+        if (pourcentage === void 0) { pourcentage = 0; }
+        this._variationStock = 0;
+        this._nom = nom;
+        this._prix = prix;
+        this._stock = stock;
+        this._urlImage = urlImage;
+        this._description = description;
+        this._pourcentage = pourcentage;
+    }
+    Object.defineProperty(Produit.prototype, "nom", {
+        get: function () {
+            return this._nom;
+        },
+        set: function (value) {
+            this._nom = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "prix", {
+        get: function () {
+            return this._prix;
+        },
+        set: function (value) {
+            this._prix = (value < 0) ? 0 : value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "stock", {
+        get: function () {
+            return this._stock;
+        },
+        set: function (value) {
+            this._stock = (value < 0) ? 0 : value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "variationStock", {
+        get: function () {
+            return this._variationStock;
+        },
+        set: function (value) {
+            this._variationStock = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "urlImage", {
+        get: function () {
+            return this._urlImage;
+        },
+        set: function (value) {
+            this._urlImage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "description", {
+        get: function () {
+            return this._description;
+        },
+        set: function (value) {
+            this._description = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Produit.prototype, "pourcentage", {
+        get: function () {
+            return this._pourcentage;
+        },
+        set: function (value) {
+            this._pourcentage = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Produit.prototype.modifierParentVariationStock = function (value) {
+        this._variationStock += value;
+    };
+    Produit.prototype.dimVariation = function () {
+        this._variationStock--;
+    };
+    Produit.prototype.augmVariation = function () {
+        this._variationStock++;
+    };
+    Produit.prototype.misAJourStockAvecVariation = function () {
+        this.stock = this.stockDisponible();
+    };
+    Produit.prototype.stockDisponible = function () {
+        return this.stock - this._variationStock;
+    };
+    Produit.prototype.isDiponible = function () {
+        return this.stockDisponible() > 0;
+    };
+    Produit.prototype.isDiminuer = function () {
+        return this.variationStock > 0;
+    };
+    Produit.prototype.isRuptureStock = function () {
+        return this.stock === 0 && this.variationStock === 0;
+    };
+    return Produit;
+}());
+
+//# sourceMappingURL=produit.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/utilisateur-manager-service.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UtilisateurManagerServiceService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UtilisateurManagerServiceService = (function () {
+    function UtilisateurManagerServiceService(http) {
+        this.http = http;
+    }
+    UtilisateurManagerServiceService.prototype.getAllTodos = function () {
+        return this
+            .http
+            .get("http://localhost:65281/api/utilisateur")
+            .map(function (response) { return response.json(); });
+    };
+    UtilisateurManagerServiceService.prototype.createUtilisateur = function (utilisateur) {
+        return this
+            .http
+            .post("http://localhost:65281/api/utilisateur", utilisateur.getCleanDataForSending())
+            .map(function (response) { return response.json(); });
+    };
+    return UtilisateurManagerServiceService;
+}());
+UtilisateurManagerServiceService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], UtilisateurManagerServiceService);
+
+var _a;
+//# sourceMappingURL=utilisateur-manager-service.service.js.map
 
 /***/ }),
 
@@ -441,6 +715,16 @@ var Utilisateur = (function () {
         this._mp = mp;
         this._cmp = cmp;
     }
+    Object.defineProperty(Utilisateur.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        set: function (value) {
+            this._id = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Utilisateur.prototype, "cmp", {
         get: function () {
             return this._cmp;
@@ -561,6 +845,37 @@ var Utilisateur = (function () {
         enumerable: true,
         configurable: true
     });
+    Utilisateur.fromJSON = function (rawTodo) {
+        var tmpUtilisateur = new Utilisateur(rawTodo["Nom"]);
+        tmpUtilisateur.id = rawTodo["Id"];
+        tmpUtilisateur.prenom = rawTodo["Prenom"];
+        tmpUtilisateur.dateNaissance = rawTodo["DateNaissance"];
+        tmpUtilisateur.cp = rawTodo["CodePostal"];
+        tmpUtilisateur.ville = rawTodo["Ville"];
+        tmpUtilisateur.rue = rawTodo["Rue"];
+        tmpUtilisateur.num = rawTodo["Numero"];
+        tmpUtilisateur.gsm = rawTodo["Gsm"];
+        tmpUtilisateur.mail = rawTodo["Email"];
+        tmpUtilisateur.pseudos = rawTodo["Pseudo"];
+        tmpUtilisateur.mp = rawTodo["MDP"];
+        return tmpUtilisateur;
+    };
+    Utilisateur.prototype.getCleanDataForSending = function () {
+        return {
+            "MDP": this.mp,
+            "Pseudo": this.pseudos,
+            "Email": this.mail,
+            "Gsm": this.gsm,
+            "Numero": this.num,
+            "Rue": this.rue,
+            "Ville": this.ville,
+            "CodePostal": this.cp,
+            "DateNaissance": this.dateNaissance,
+            "Prenom": this.prenom,
+            "Nom": this.nom,
+            "Id": this._id
+        };
+    };
     return Utilisateur;
 }());
 
