@@ -25,5 +25,18 @@ namespace DrinkAlcool.Controllers
         {
             return ProduitDAO.Create(p);
         }
+
+        public IHttpActionResult Put(Produit prod)
+        {
+            if (ProduitDAO.Update(prod))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+
+
     }
 }

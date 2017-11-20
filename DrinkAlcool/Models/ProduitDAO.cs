@@ -11,6 +11,7 @@ namespace DrinkAlcool.Models
         private static readonly string QUERY = "SELECT * FROM produit";
         private static readonly string GET = QUERY + "where id=@id";
         private static readonly string CREATE = "INSERT INTO produit(nom, prix, stock, urlImage, description, pourcentage) OUTPUT INSERTED.id VALUES (@nom, @prix, @stock, @urlImage, @description, @pourcentage)";
+        private static readonly string UPDATE = "UPDATE produit SET nom=@nom, prix,@prix, stock=@stock, urlImage=@urlImage, description=@description, pourcentage=@pourcentage";
 
         public static List<Produit> GetAllProduits()
         {
@@ -24,13 +25,14 @@ namespace DrinkAlcool.Models
 
                 while (reader.Read())
                 {
+                   
                     listeProduits.Add(new Produit(reader.GetInt32(0),
                                                     reader.GetString(1),
-                                                    reader.GetInt32(2),
+                                                    reader.GetDecimal(2),
                                                     reader.GetInt32(3),
                                                     reader.GetString(4),
                                                     reader.GetString(5),
-                                                    reader.GetInt32(6)));
+                                                    reader.GetDecimal(6)));
                 }
             }
 
@@ -81,6 +83,30 @@ namespace DrinkAlcool.Models
             }
             return prod;
         }
+
+
+        public static bool Update(Produit prod)
+        {
+            bool aEteModifie = false;
+
+            using (SqlConnection conn = DataBase.GetConnection())
+            {
+
+                conn.Open();
+                SqlCommand command = new SqlCommand(UPDATE, conn);
+                command.Parameters.AddWithValue("@id", prod.Id);
+                command.Parameters.AddWithValue("@nom", prod.Nom);
+                command.Parameters.AddWithValue("@prix", prod.Prix);
+                command.Parameters.AddWithValue("@stock", prod.Stock);
+                command.Parameters.AddWithValue("@urlImage", prod.UrlImage);
+                command.Parameters.AddWithValue("@description", prod.Description);
+                command.Parameters.AddWithValue("@pourcentage", prod.Pourcentage);
+                
+
+            }
+            return aEteModifie;
+        }
+
 
 
     }

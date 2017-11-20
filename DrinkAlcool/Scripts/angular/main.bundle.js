@@ -99,7 +99,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (submit)=\"createProduct()\">\r\n    <div class=\"form-group\">\r\n      <div class=\"row\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Nom du Produit\" name=\"nom\" [(ngModel)]=\"tmpProduit.nom\" required>\r\n        <input type=\"number\" class=\"form-control\" placeholder=\"Prix\" name=\"prix\" [(ngModel)]=\"tmpProduit.prix\" required>\r\n        <input type=\"number\" class=\"form-control\" name=\"stock\" placeholder=\"Stock\" [(ngModel)]=\"tmpProduit.stock\"  required>\r\n        <input type=\"text\" class=\"form-control\" name=\"url\" placeholder=\"URL image\" [(ngModel)]=\"tmpProduit.urlImage\" required>\r\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!formulaire.form.valid\">Valider</button>\r\n      </div>\r\n    </div>\r\n    {{listeProduit|json}}\r\n  </form>\r\n</div>\r\n\r\n<div class=\"container\">\r\n  <table class=\"table table-bordered\" style=\"width:100%\">\r\n    <thead>\r\n    <tr>\r\n      <th class=\"col-sm-3\">Nom du produit</th>\r\n      <th class=\"col-sm-3\">Image</th>\r\n      <th class=\"col-sm-3\">Prix</th>\r\n      <th class=\"col-sm-3\">Stock</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let produit of listeProduit; index as i;\">\r\n        <td class=\"col-sm-3\" class=\"container-fluid bg-3 text-center\">{{produit.nom}}</td>\r\n        <td class=\"col-sm-3\" height=\"20px\"><img [src]=\" produit.urlImage\" class=\"img-responsive\" alt=\"Image\"/></td>\r\n        <td class=\"col-sm-3\">{{produit.prix}}</td>\r\n        <td class=\"col-sm-3\">{{produit.stock}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (submit)=\"createProduct()\">\r\n    <div class=\"form-group\">\r\n      <div class=\"row\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Nom du Produit\" name=\"nom\" [(ngModel)]=\"tmpNom\" required>\r\n        <input type=\"number\" class=\"form-control\" placeholder=\"Prix\" name=\"prix\" [(ngModel)]=\"tmpPrix\" required>\r\n        <input type=\"number\" class=\"form-control\" name=\"stock\" placeholder=\"Stock\" [(ngModel)]=\"tmpStock\"  required>\r\n        <input type=\"text\" class=\"form-control\" name=\"url\" placeholder=\"URL image\" [(ngModel)]=\"tmpUrlImage\" required>\r\n        <!--<input type=\"textarea\" class=\"form-control\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpProduit.description\" required>-->\r\n        <textarea class=\"form-control\" rows=\"5\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpDescription\" required></textarea>\r\n\r\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!formulaire.form.valid\">Valider</button>\r\n      </div>\r\n    </div>\r\n    {{listeProduit|json}}\r\n  </form>\r\n</div>\r\n\r\n<!--<div class=\"container\">\r\n  <table class=\"table table-bordered\" style=\"width:100%\">\r\n    <thead>\r\n    <tr>\r\n      <th class=\"col-sm-3\">Nom du produit</th>\r\n      <th class=\"col-sm-3\">Image</th>\r\n      <th class=\"col-sm-3\">Prix</th>\r\n      <th class=\"col-sm-3\">Stock</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let produit of listeProduit; index as i;\">\r\n        <td class=\"col-sm-3\" class=\"container-fluid bg-3 text-center\">{{produit.nom}}</td>\r\n        <td class=\"col-sm-3\" height=\"20px\"><img [src]=\" produit.urlImage\" class=\"img-responsive\" alt=\"Image\"/></td>\r\n        <td class=\"col-sm-3\"><input type=\"text\" class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\"></td>\r\n        <td class=\"col-sm-3\">{{produit.stock}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>-->\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\" *ngFor=\"let produit of listeProduit; index as i;\">\r\n    <div class=\"col-md-8\">\r\n      <div class=\"media\">\r\n        <div class=\"media-left\">\r\n          <img class=\"media-object\" [src]=\"produit.urlImage\" width=\"304\" height=\"236\" width=\"304\">\r\n        </div>\r\n        <div class=\"media-body\">\r\n          <h4 class=\"media-heading\">{{produit.nom}}</h4>\r\n          <p>{{produit.description}}</p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.stock\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <span class=\"glyphicon glyphicon-remove\" (click)=\"deleteProduit(i)\"></span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <br>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -110,6 +110,7 @@ module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (s
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__produit__ = __webpack_require__("../../../../../src/app/produit.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__produit_manager_service__ = __webpack_require__("../../../../../src/app/produit-manager.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -121,28 +122,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AdminComponent = (function () {
-    function AdminComponent() {
-        this.tmpProduit = new __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */]();
+    function AdminComponent(produitService) {
+        this.produitService = produitService;
+        this.tmpNom = '';
+        this.tmpUrlImage = '';
+        this.tmpDescription = '';
         this.listeProduit = [];
+        this.lsiteProduitChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     AdminComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.produitService
+            .getAllProduits()
+            .subscribe(function (produits) {
+            _this.listeProduit = __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */].fromJSONs(produits);
+            _this.emitProduits();
+        });
     };
     AdminComponent.prototype.createProduct = function () {
-        this.listeProduit.push(this.tmpProduit);
-        this.tmpProduit = new __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */]();
+        var tmpProduit = new __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */](this.tmpNom, this.tmpPrix, this.tmpStock, this.tmpUrlImage, this.tmpDescription, this.tmpPourcentage);
+        this.listeProduit.push(tmpProduit);
+        this
+            .produitService
+            .createProduit(tmpProduit)
+            .subscribe(function (produit) { return tmpProduit.id = __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */].fromJSON(produit).id; });
+        this.emitProduits();
+    };
+    AdminComponent.prototype.updateProduit = function (produit) {
+        this.produitService.updateProduit(produit).subscribe();
+    };
+    AdminComponent.prototype.deleteProduit = function (index) {
+        var _this = this;
+        var DELETE_PRODUIT = function () { return _this.listeProduit.splice(index, 1); };
+        var DISPLAY_ERROR = function (error) { return console.error(error); };
+        this
+            .produitService
+            .deleteProduit(this.listeProduit[index].id)
+            .subscribe(DELETE_PRODUIT, DISPLAY_ERROR);
+    };
+    AdminComponent.prototype.emitProduits = function () {
+        this.lsiteProduitChange.next(this.listeProduit);
     };
     return AdminComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], AdminComponent.prototype, "lsiteProduitChange", void 0);
 AdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-admin',
         template: __webpack_require__("../../../../../src/app/admin/admin.component.html"),
         styles: [__webpack_require__("../../../../../src/app/admin/admin.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__produit_manager_service__["a" /* ProduitManagerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__produit_manager_service__["a" /* ProduitManagerService */]) === "function" && _b || Object])
 ], AdminComponent);
 
+var _a, _b;
 //# sourceMappingURL=admin.component.js.map
 
 /***/ }),
@@ -221,12 +259,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__admin_admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__ = __webpack_require__("../../../../../src/app/utilisateur-manager-service.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__produit_manager_service__ = __webpack_require__("../../../../../src/app/produit-manager.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -291,7 +331,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes),
             __WEBPACK_IMPORTED_MODULE_12__angular_http__["b" /* HttpModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */], __WEBPACK_IMPORTED_MODULE_13__produit_manager_service__["a" /* ProduitManagerService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -321,7 +361,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/connexion/connexion.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"logo\"><img src=\"http://www.novemberfire.com/shirtspopup/NFTpop137.gif\"/></div>\r\n\r\n  <form>\r\n\r\n    <div class=\"input-group\" id=\"p\">\r\n      <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\r\n      <input id=\"email\" type=\"text\" class=\"form-control\" name=\"Pseudo\" placeholder=\"Pseudo\">\r\n    </div>\r\n\r\n    <div class=\"input-group\">\r\n      <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i></span>\r\n      <input id=\"password\" type=\"password\" class=\"form-control\" name=\"MP\" placeholder=\"Mot de passe\">\r\n    </div>\r\n\r\n    <div class=\"checkbox\">\r\n      <label><input type=\"checkbox\" name=\"remember\"> Se souvenir </label>\r\n    </div>\r\n\r\n    <button type=\"submit\" class=\"btn btn-sm btn-primary btn-lg btn-block\">Se connecter</button>\r\n\r\n    <br>\r\n\r\n    <div class=\"alert alert-info\">\r\n      <strong>Info !</strong> Pas encore enregistré ? <a routerLink=\"/inscription\" class=\"alert-link\">Créer un compte</a>.\r\n    </div>\r\n\r\n  </form>\r\n\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"logo\"><img src=\"http://www.novemberfire.com/shirtspopup/NFTpop137.gif\"/></div>\r\n\r\n  <form>\r\n\r\n    <div class=\"input-group\" id=\"p\">\r\n      <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\r\n      <input id=\"email\" type=\"text\" class=\"form-control\" name=\"Pseudo\" placeholder=\"Pseudo\">\r\n    </div>\r\n\r\n    <div class=\"input-group\">\r\n      <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i></span>\r\n      <input id=\"password\" type=\"password\" class=\"form-control\" name=\"MP\" placeholder=\"Mot de passe\">\r\n    </div>\r\n\r\n    <div class=\"checkbox\">\r\n      <label><input type=\"checkbox\" name=\"remember\"> Se souvenir </label>\r\n    </div>\r\n\r\n    <button type=\"submit\" routerLink=\"/admin\" class=\"btn btn-sm btn-primary btn-lg btn-block\">Se connecter</button>\r\n\r\n    <br>\r\n\r\n    <div class=\"alert alert-info\">\r\n      <strong>Info !</strong> Pas encore enregistré ? <a routerLink=\"/inscription\" class=\"alert-link\">Créer un compte</a>.\r\n    </div>\r\n\r\n  </form>\r\n\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -470,7 +510,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var InscriptionComponent = (function () {
     function InscriptionComponent(utilisateurService) {
         this.utilisateurService = utilisateurService;
-        this.tmpInscription = '';
+        this.tmpInscription = "";
         this.todosChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     InscriptionComponent.prototype.ngOnInit = function () {
@@ -489,7 +529,7 @@ var InscriptionComponent = (function () {
             .utilisateurService
             .createUtilisateur(tmpUtilisateur)
             .subscribe(function (u) { return tmpUtilisateur.id = __WEBPACK_IMPORTED_MODULE_1__utilisateur__["a" /* Utilisateur */].fromJSON(u).id; });
-        this.tmpInscription = '';
+        this.tmpInscription = "";
         this.emitUtilisateur();
     };
     return InscriptionComponent;
@@ -509,6 +549,59 @@ InscriptionComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=inscription.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/produit-manager.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProduitManagerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ProduitManagerService = (function () {
+    function ProduitManagerService(http) {
+        this.http = http;
+    }
+    ProduitManagerService.prototype.getAllProduits = function () {
+        return this.http.get('http://localhost:65281/api/produit').map(function (response) { return response.json(); });
+    };
+    ProduitManagerService.prototype.updateProduit = function (produit) {
+        return this.http.put('http://localhost:65281/api/produit', produit.getCleanDataSending());
+    };
+    ProduitManagerService.prototype.deleteProduit = function (id) {
+        return this.http.delete('http://localhost:65281/api/produit', {
+            params: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpParams */]().set('id', id + '').toString()
+        });
+    };
+    ProduitManagerService.prototype.createProduit = function (produit) {
+        return this
+            .http
+            .post('http://localhost:65281/api/produit', produit.getCleanDataSending())
+            .map(function (response) { return response.json(); });
+    };
+    return ProduitManagerService;
+}());
+ProduitManagerService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], ProduitManagerService);
+
+var _a;
+//# sourceMappingURL=produit-manager.service.js.map
 
 /***/ }),
 
@@ -627,6 +720,43 @@ var Produit = (function () {
     Produit.prototype.isRuptureStock = function () {
         return this.stock === 0 && this.variationStock === 0;
     };
+    Object.defineProperty(Produit.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        set: function (value) {
+            this._id = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Produit.fromJSON = function (rawProduit) {
+        var tmpProduit = new Produit(rawProduit["nom"]);
+        tmpProduit.id = rawProduit["Id"];
+        tmpProduit.prix = rawProduit["prix"];
+        tmpProduit.stock = rawProduit["stock"];
+        tmpProduit.urlImage = rawProduit["urlImage"];
+        tmpProduit.description = rawProduit["description"];
+        tmpProduit.pourcentage = rawProduit["pourcentage"];
+        return tmpProduit;
+    };
+    Produit.fromJSONs = function (rawsProduit) {
+        return rawsProduit.reduce(function (listeProduit, currentElement) {
+            listeProduit.push(Produit.fromJSON(currentElement));
+            return listeProduit;
+        }, []);
+    };
+    Produit.prototype.getCleanDataSending = function () {
+        return {
+            "nom": this.nom,
+            "prix": this.prix,
+            "stock": this.stock,
+            "urlImage": this.urlImage,
+            "description": this.description,
+            "pourcentage": this.pourcentage,
+            "Id": this._id
+        };
+    };
     return Produit;
 }());
 
@@ -662,13 +792,13 @@ var UtilisateurManagerServiceService = (function () {
     UtilisateurManagerServiceService.prototype.getAllTodos = function () {
         return this
             .http
-            .get("http://localhost:65281/api/utilisateur")
+            .get('http://localhost:65281/api/utilisateur')
             .map(function (response) { return response.json(); });
     };
     UtilisateurManagerServiceService.prototype.createUtilisateur = function (utilisateur) {
         return this
             .http
-            .post("http://localhost:65281/api/utilisateur", utilisateur.getCleanDataForSending())
+            .post('http://localhost:65281/api/utilisateur', utilisateur.getCleanDataForSending())
             .map(function (response) { return response.json(); });
     };
     return UtilisateurManagerServiceService;

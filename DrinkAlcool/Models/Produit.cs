@@ -9,7 +9,7 @@ namespace DrinkAlcool.Models
     {
         public Produit() {}
 
-        public Produit(int id, string nom, int prix, int stock, string urlImage, string description, int pourcentage)
+        public Produit(int id, string nom, Decimal prix, int stock, string urlImage, string description, Decimal pourcentage)
         {
             Id = id;
             Nom = nom;
@@ -20,43 +20,46 @@ namespace DrinkAlcool.Models
             Pourcentage = pourcentage;
         }
 
-        public object Id
-        {
-            get;
-            internal set;
-        }
+        public Produit(string nom, Decimal prix, int stock, string urlImage, string description, Decimal pourcentage) : this(0, nom, prix, stock, urlImage, description, pourcentage) { }
 
-        public object Nom
+
+        public int Id
         {
             get;
             set;
         }
 
-        public object Prix
+        public string Nom
         {
             get;
             set;
         }
 
-        public object Stock
+        public Decimal Prix
         {
             get;
             set;
         }
 
-        public object UrlImage
+        public int Stock
         {
             get;
             set;
         }
 
-        public object Description
+        public string UrlImage
         {
             get;
             set;
         }
 
-        public object Pourcentage
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        public Decimal Pourcentage
         {
             get;
             set;
