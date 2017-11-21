@@ -99,7 +99,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/admin/admin.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (submit)=\"createProduct()\">\r\n    <div class=\"form-group\">\r\n      <div class=\"row\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Nom du Produit\" name=\"nom\" [(ngModel)]=\"tmpNom\" required>\r\n        <input type=\"number\" class=\"form-control\" placeholder=\"Prix\" name=\"prix\" [(ngModel)]=\"tmpPrix\" required>\r\n        <input type=\"number\" class=\"form-control\" name=\"stock\" placeholder=\"Stock\" [(ngModel)]=\"tmpStock\"  required>\r\n        <input type=\"text\" class=\"form-control\" name=\"url\" placeholder=\"URL image\" [(ngModel)]=\"tmpUrlImage\" required>\r\n        <!--<input type=\"textarea\" class=\"form-control\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpProduit.description\" required>-->\r\n        <textarea class=\"form-control\" rows=\"5\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpDescription\" required></textarea>\r\n\r\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!formulaire.form.valid\">Valider</button>\r\n      </div>\r\n    </div>\r\n    {{listeProduit|json}}\r\n  </form>\r\n</div>\r\n\r\n<!--<div class=\"container\">\r\n  <table class=\"table table-bordered\" style=\"width:100%\">\r\n    <thead>\r\n    <tr>\r\n      <th class=\"col-sm-3\">Nom du produit</th>\r\n      <th class=\"col-sm-3\">Image</th>\r\n      <th class=\"col-sm-3\">Prix</th>\r\n      <th class=\"col-sm-3\">Stock</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let produit of listeProduit; index as i;\">\r\n        <td class=\"col-sm-3\" class=\"container-fluid bg-3 text-center\">{{produit.nom}}</td>\r\n        <td class=\"col-sm-3\" height=\"20px\"><img [src]=\" produit.urlImage\" class=\"img-responsive\" alt=\"Image\"/></td>\r\n        <td class=\"col-sm-3\"><input type=\"text\" class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\"></td>\r\n        <td class=\"col-sm-3\">{{produit.stock}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>-->\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\" *ngFor=\"let produit of listeProduit; index as i;\">\r\n    <div class=\"col-md-8\">\r\n      <div class=\"media\">\r\n        <div class=\"media-left\">\r\n          <img class=\"media-object\" [src]=\"produit.urlImage\" width=\"304\" height=\"236\" width=\"304\">\r\n        </div>\r\n        <div class=\"media-body\">\r\n          <h4 class=\"media-heading\">{{produit.nom}}</h4>\r\n          <p>{{produit.description}}</p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.stock\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <span class=\"glyphicon glyphicon-remove\" (click)=\"deleteProduit(i)\"></span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <br>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <form #formulaire=\"ngForm\" (submit)=\"createProduct()\">\r\n    <div class=\"form-group\">\r\n      <div class=\"row\">\r\n        <input type=\"text\" class=\"form-control\" placeholder=\"Nom du Produit\" name=\"nom\" [(ngModel)]=\"tmpNom\" required>\r\n        <input type=\"number\" class=\"form-control\" placeholder=\"Prix\" name=\"prix\" [(ngModel)]=\"tmpPrix\" required>\r\n        <input type=\"number\" class=\"form-control\" name=\"stock\" placeholder=\"Stock\" [(ngModel)]=\"tmpStock\"  required>\r\n        <input type=\"text\" class=\"form-control\" name=\"url\" placeholder=\"URL image\" [(ngModel)]=\"tmpUrlImage\" required>\r\n        <!--<input type=\"textarea\" class=\"form-control\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpProduit.description\" required>-->\r\n       <!-- <textarea class=\"form-control\" rows=\"5\" name=\"description\" placeholder=\"Description\" [(ngModel)]=\"tmpDescription\" required></textarea>-->\r\n\r\n        <button type=\"submit\" class=\"btn btn-default\" [disabled]=\"!formulaire.form.valid\">Valider</button>\r\n      </div>\r\n    </div>\r\n    {{listeProduit|json}}\r\n  </form>\r\n</div>\r\n\r\n<!--<div class=\"container\">\r\n  <table class=\"table table-bordered\" style=\"width:100%\">\r\n    <thead>\r\n    <tr>\r\n      <th class=\"col-sm-3\">Nom du produit</th>\r\n      <th class=\"col-sm-3\">Image</th>\r\n      <th class=\"col-sm-3\">Prix</th>\r\n      <th class=\"col-sm-3\">Stock</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let produit of listeProduit; index as i;\">\r\n        <td class=\"col-sm-3\" class=\"container-fluid bg-3 text-center\">{{produit.nom}}</td>\r\n        <td class=\"col-sm-3\" height=\"20px\"><img [src]=\" produit.urlImage\" class=\"img-responsive\" alt=\"Image\"/></td>\r\n        <td class=\"col-sm-3\"><input type=\"text\" class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\"></td>\r\n        <td class=\"col-sm-3\">{{produit.stock}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>-->\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\" *ngFor=\"let produit of listeProduit; index as i;\">\r\n    <div class=\"col-md-8\">\r\n      <div class=\"media\">\r\n        <div class=\"media-left\">\r\n          <img class=\"media-object\" [src]=\"produit.urlImage\" width=\"304\" height=\"236\" width=\"304\">\r\n        </div>\r\n        <div class=\"media-body\">\r\n          <h4 class=\"media-heading\">{{produit.nom}}</h4>\r\n          <p>{{produit.description}}</p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.prix\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <p><input type=\"text\"  class=\"form-control\" [(ngModel)]=\"produit.stock\" (blur)=\"updateProduit(produit)\" width=\"4\"></p>\r\n          <span class=\"glyphicon glyphicon-remove\" (click)=\"deleteProduit(i)\"></span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <br>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -148,6 +148,11 @@ var AdminComponent = (function () {
             .produitService
             .createProduit(tmpProduit)
             .subscribe(function (produit) { return tmpProduit.id = __WEBPACK_IMPORTED_MODULE_1__produit__["a" /* Produit */].fromJSON(produit).id; });
+        this.tmpNom = '';
+        this.tmpPrix = 0;
+        this.tmpStock = 0;
+        this.tmpUrlImage = '';
+        this.tmpDescription = '';
         this.emitProduits();
     };
     AdminComponent.prototype.updateProduit = function (produit) {
@@ -258,15 +263,13 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__inscription_inscription_component__ = __webpack_require__("../../../../../src/app/inscription/inscription.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__admin_admin_component__ = __webpack_require__("../../../../../src/app/admin/admin.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__ = __webpack_require__("../../../../../src/app/utilisateur-manager-service.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__produit_manager_service__ = __webpack_require__("../../../../../src/app/produit-manager.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__produit_manager_service__ = __webpack_require__("../../../../../src/app/produit-manager.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -327,11 +330,10 @@ AppModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes),
-            __WEBPACK_IMPORTED_MODULE_12__angular_http__["b" /* HttpModule */]
+            __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["b" /* HttpClientModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes)
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */], __WEBPACK_IMPORTED_MODULE_13__produit_manager_service__["a" /* ProduitManagerService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_11__utilisateur_manager_service_service__["a" /* UtilisateurManagerServiceService */], __WEBPACK_IMPORTED_MODULE_12__produit_manager_service__["a" /* ProduitManagerService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -558,8 +560,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProduitManagerService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -571,33 +572,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var ProduitManagerService = (function () {
     function ProduitManagerService(http) {
         this.http = http;
     }
     ProduitManagerService.prototype.getAllProduits = function () {
-        return this.http.get('http://localhost:65281/api/produit').map(function (response) { return response.json(); });
+        return this.http.get('http://localhost:65281/api/produit');
     };
     ProduitManagerService.prototype.updateProduit = function (produit) {
         return this.http.put('http://localhost:65281/api/produit', produit.getCleanDataSending());
     };
     ProduitManagerService.prototype.deleteProduit = function (id) {
+        var DISPLAY_ERROR = function (error) { return console.error(error); };
         return this.http.delete('http://localhost:65281/api/produit', {
-            params: new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpParams */]().set('id', id + '').toString()
+            params: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpParams */]().set('id', id + '')
         });
     };
     ProduitManagerService.prototype.createProduit = function (produit) {
         return this
             .http
-            .post('http://localhost:65281/api/produit', produit.getCleanDataSending())
-            .map(function (response) { return response.json(); });
+            .post('http://localhost:65281/api/produit', produit.getCleanDataSending());
     };
     return ProduitManagerService;
 }());
 ProduitManagerService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], ProduitManagerService);
 
 var _a;
@@ -720,41 +720,30 @@ var Produit = (function () {
     Produit.prototype.isRuptureStock = function () {
         return this.stock === 0 && this.variationStock === 0;
     };
-    Object.defineProperty(Produit.prototype, "id", {
-        get: function () {
-            return this._id;
-        },
-        set: function (value) {
-            this._id = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Produit.fromJSON = function (rawProduit) {
-        var tmpProduit = new Produit(rawProduit["nom"]);
-        tmpProduit.id = rawProduit["Id"];
-        tmpProduit.prix = rawProduit["prix"];
-        tmpProduit.stock = rawProduit["stock"];
-        tmpProduit.urlImage = rawProduit["urlImage"];
-        tmpProduit.description = rawProduit["description"];
-        tmpProduit.pourcentage = rawProduit["pourcentage"];
+        console.log(rawProduit);
+        var tmpProduit = new Produit(rawProduit['Nom']);
+        tmpProduit.id = rawProduit['Id'];
+        tmpProduit.prix = rawProduit['Prix'];
+        tmpProduit.stock = rawProduit['Stock'];
+        tmpProduit.urlImage = rawProduit['UrlImage'];
+        tmpProduit.description = rawProduit['Description'];
+        tmpProduit.pourcentage = rawProduit['Pourcentage'];
         return tmpProduit;
     };
     Produit.fromJSONs = function (rawsProduit) {
-        return rawsProduit.reduce(function (listeProduit, currentElement) {
-            listeProduit.push(Produit.fromJSON(currentElement));
-            return listeProduit;
-        }, []);
+        return rawsProduit.map(Produit.fromJSON);
     };
     Produit.prototype.getCleanDataSending = function () {
+        var DISPLAY_ERROR = function (error) { return console.error(error); };
         return {
-            "nom": this.nom,
-            "prix": this.prix,
-            "stock": this.stock,
-            "urlImage": this.urlImage,
-            "description": this.description,
-            "pourcentage": this.pourcentage,
-            "Id": this._id
+            'Nom': this._nom,
+            'Prix': this._prix,
+            'Stock': this._stock,
+            'UrlImage': this._urlImage,
+            'Description': this._description,
+            'Pourcentage': this._pourcentage,
+            'Id': this.id
         };
     };
     return Produit;
@@ -770,9 +759,9 @@ var Produit = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UtilisateurManagerServiceService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("../../../common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -792,20 +781,18 @@ var UtilisateurManagerServiceService = (function () {
     UtilisateurManagerServiceService.prototype.getAllTodos = function () {
         return this
             .http
-            .get('http://localhost:65281/api/utilisateur')
-            .map(function (response) { return response.json(); });
+            .get('http://localhost:65281/api/utilisateur');
     };
     UtilisateurManagerServiceService.prototype.createUtilisateur = function (utilisateur) {
         return this
             .http
-            .post('http://localhost:65281/api/utilisateur', utilisateur.getCleanDataForSending())
-            .map(function (response) { return response.json(); });
+            .post('http://localhost:65281/api/utilisateur', utilisateur.getCleanDataForSending());
     };
     return UtilisateurManagerServiceService;
 }());
 UtilisateurManagerServiceService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], UtilisateurManagerServiceService);
 
 var _a;

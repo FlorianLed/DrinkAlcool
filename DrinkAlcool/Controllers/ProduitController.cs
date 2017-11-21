@@ -26,15 +26,26 @@ namespace DrinkAlcool.Controllers
             return ProduitDAO.Create(p);
         }
 
-        public IHttpActionResult Put(Produit prod)
+        public string Put(Produit prod)
         {
             if (ProduitDAO.Update(prod))
             {
-                return Ok();
+                return "Modification effectuée";
             }
 
-            return BadRequest();
+            return "Erreur de modification";
         }
+
+        public string Delete(int id)
+        {
+            if (ProduitDAO.Delete(id))
+            {
+                return "Supression effectuée";
+            }
+            return "Erreur de suppression";
+        }
+
+
 
 
 
