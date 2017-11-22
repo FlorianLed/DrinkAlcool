@@ -9,10 +9,10 @@ namespace DrinkAlcool.Models
     public static class UtilisateurDAO
     {
         private static readonly string QUERY = "SELECT * FROM utilisateur";
-        private static readonly string GET = QUERY + "where id=@id";
+        private static readonly string GET = QUERY + " where id=@id";
         private static readonly string CREATE = "INSERT INTO utilisateur(nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, pseudo, mdp) OUTPUT INSERTED.id VALUES (@nom, @prenom, @dateNaissance, @codePostal, @ville, @rue, @numero, @gsm, @email, @pseudo, @mdp)";
         private static readonly string DELETE = "DELETE FROM utilisateur WHERE id=@id";
-        private static readonly string UPDATE = "UPDATE utilisateur SET nom=@nom, prenom=@prenom, dateNaissance=@dateNaissance, codePostal=@codePostal, ville=@ville, rue=@rue, numero=@numero, gsm=@gsm, email=@email, pseudo=@pseudo, motDePasse=@motDePasse";
+        private static readonly string UPDATE = "UPDATE utilisateur SET nom=@nom, prenom=@prenom, dateNaissance=@dateNaissance, codePostal=@codePostal, ville=@ville, rue=@rue, numero=@numero, gsm=@gsm, email=@email, pseudo=@pseudo, mdp=@mdp";
 
         public static List<Utilisateur> GetAllUtilisateurs()
         {
@@ -34,7 +34,7 @@ namespace DrinkAlcool.Models
                                                             reader.GetString(5),
                                                             reader.GetString(6),
                                                             reader.GetInt32(7),
-                                                            reader.GetString(8),
+                                                            reader.GetInt32(8),
                                                             reader.GetString(9),
                                                             reader.GetString(10),
                                                             reader.GetString(11)));
@@ -64,7 +64,7 @@ namespace DrinkAlcool.Models
                                         reader.GetString(5),
                                         reader.GetString(6),
                                         reader.GetInt32(7),
-                                        reader.GetString(8),
+                                        reader.GetInt32(8),
                                         reader.GetString(9),
                                         reader.GetString(10),
                                         reader.GetString(11));
@@ -98,10 +98,47 @@ namespace DrinkAlcool.Models
             return user;
         }
 
-        
+
+        public static Boolean Update(Utilisateur user)
+        {
+            bool aEteModifie = false;
+
+            using (SqlConnection conn = DataBase.GetConnection())
+            {
+
+                conn.Open();
+                SqlCommand command = new SqlCommand(UPDATE, conn);
+                command.Parameters.AddWithValue("@nom", user.Nom);
+                command.Parameters.AddWithValue("@prenom", user.Prenom);
+                command.Parameters.AddWithValue("@dateNaissance", user.DateNaissance);
+                command.Parameters.AddWithValue("@codePostal", user.CodePostal);
+                command.Parameters.AddWithValue("@ville", user.Ville);
+                command.Parameters.AddWithValue("@rue", user.Rue);
+                command.Parameters.AddWithValue("@numero", user.Numero);
+                command.Parameters.AddWithValue("@gsm", user.Gsm);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@pseudo", user.Pseudo);
+                command.Parameters.AddWithValue("@mdp", user.MDP);
+
+                aEteModifie = command.ExecuteNonQuery() != 0;
+            }
+            return aEteModifie;
+        }
 
 
+        public static bool Delete(int id)
+        {
+            bool estSupprime = false;
+            using (SqlConnection conn = DataBase.GetConnection())
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(DELETE, conn);
+                command.Parameters.AddWithValue("@id", id);
 
+                estSupprime = command.ExecuteNonQuery() != 0;
+            }
+            return estSupprime;
+        }
 
 
 

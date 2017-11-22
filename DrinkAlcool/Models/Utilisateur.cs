@@ -12,7 +12,7 @@ namespace DrinkAlcool.Models
 
         public Utilisateur() {}
 
-        public Utilisateur(int id, string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, string gsm, string email, string pseudo, string mdp)
+        public Utilisateur(int id, string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string pseudo, string mdp)
         {
             Id = id;
             Nom = nom;
@@ -28,87 +28,79 @@ namespace DrinkAlcool.Models
             MDP = mdp;
         }
 
-        public Utilisateur(string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, string gsm, string email, string pseudo, string mdp) : this(0, nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, pseudo, mdp) {}
+        public Utilisateur(string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string pseudo, string mdp) : this(0, nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, pseudo, mdp) {}
 
-        public object Id
+        public int Id
         {
             get;
             internal set;
         }
 
-        public object Nom
+        public string Nom
         {
             get;
             set;
         }
 
-        public object Prenom
+        public string Prenom
         {
             get;
             set;
         }
 
-        public object DateNaissance
+        public string DateNaissance
         {
             get;
             set;
         }
 
-        public object Ville
+        public string Ville
         {
             get;
             set;
         }
 
-        public object CodePostal
+        public int CodePostal
         {
             get;
             set;
         }
 
-        public object Rue
+        public string Rue
         {
             get;
             set;
         }
 
-        public object Numero
+        public int Numero
         {
             get;
             set;
         }
 
-        public object Gsm
+        public int Gsm
         {
             get;
             set;
         }
 
-        public object Email
+        public string Email
         {
             get;
             set;
         }
 
-        public object Pseudo
+        public string Pseudo
         {
             get;
             set;
         }
 
-        public object MDP
+        public string MDP
         {
             get;
             set;
         }
-
-        /*public object ConfirmationMDP
-        {
-            get;
-            set;
-        }*/
-
-
 
 
 

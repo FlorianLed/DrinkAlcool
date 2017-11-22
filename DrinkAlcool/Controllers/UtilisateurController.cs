@@ -26,7 +26,24 @@ namespace DrinkAlcool.Controllers
             return UtilisateurDAO.Create(u);
         }
 
+        public string Put(Utilisateur u)
+        {
+            if (UtilisateurDAO.Update(u))
+            {
+                return "Modification effectuée";
+            }
 
+            return "Erreur de modification";
+        }
+
+        public string Delete(int id)
+        {
+            if (UtilisateurDAO.Delete(id))
+            {
+                return "Supression effectuée";
+            }
+            return "Erreur de suppression";
+        }
 
 
     }
