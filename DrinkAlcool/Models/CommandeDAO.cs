@@ -10,6 +10,7 @@ namespace DrinkAlcool.Models
     {
         private static readonly string QUERY = "SELECT * FROM commande";
         private static readonly string GET = QUERY + " where id=@id";
+        //private static readonly string CREATE = "INSERT INTO produit(nom, prix, stock, urlImage, description, pourcentage) OUTPUT INSERTED.id VALUES (@nom, @prix, @stock, @urlImage, @description, @pourcentage)";
         private static readonly string CREATE = "INSERT INTO commande(idUtilisateur,nom, prix, stock, urlImage) OUTPUT INSERTED.id VALUES (@idUtilisateur,@nom, @prix, @stock, @urlImage)";
         private static readonly string DELETE = "DELETE from commande where id=@id";
 
