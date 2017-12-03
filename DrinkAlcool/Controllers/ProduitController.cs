@@ -45,9 +45,5 @@ namespace DrinkAlcool.Controllers
             return "Erreur de suppression";
         }
 
-
-
-
-
     }
 }
