@@ -12,7 +12,7 @@ namespace DrinkAlcool.Models
 
         public Utilisateur() {}
 
-        public Utilisateur(int id, string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string pseudo, string mdp)
+        public Utilisateur(int id, string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string mdp, bool admin)
         {
             Id = id;
             Nom = nom;
@@ -24,11 +24,11 @@ namespace DrinkAlcool.Models
             Numero = numero;
             Gsm = gsm;
             Email = email;
-            Pseudo = pseudo;
             MDP = mdp;
+            Admin = admin;
         }
 
-        public Utilisateur(string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string pseudo, string mdp) : this(0, nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, pseudo, mdp) {}
+        public Utilisateur(string nom, string prenom, string dateNaissance, int codePostal, string ville, string rue, int numero, int gsm, string email, string mdp, bool admin) : this(0, nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, mdp, admin) {}
 
         public int Id
         {
@@ -90,18 +90,17 @@ namespace DrinkAlcool.Models
             set;
         }
 
-        public string Pseudo
-        {
-            get;
-            set;
-        }
-
         public string MDP
         {
             get;
             set;
         }
 
+        public bool Admin
+        {
+            get;
+            set;
+        }
 
 
 

@@ -10,9 +10,9 @@ namespace DrinkAlcool.Models
     {
         private static readonly string QUERY = "SELECT * FROM utilisateur";
         private static readonly string GET = QUERY + " where id=@id";
-        private static readonly string CREATE = "INSERT INTO utilisateur(nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, pseudo, mdp) OUTPUT INSERTED.id VALUES (@nom, @prenom, @dateNaissance, @codePostal, @ville, @rue, @numero, @gsm, @email, @pseudo, @mdp)";
+        private static readonly string CREATE = "INSERT INTO utilisateur(nom, prenom, dateNaissance, codePostal, ville, rue, numero, gsm, email, mdp, admin) OUTPUT INSERTED.id VALUES (@nom, @prenom, @dateNaissance, @codePostal, @ville, @rue, @numero, @gsm, @email, @mdp, @admin)";
         private static readonly string DELETE = "DELETE FROM utilisateur WHERE id=@id";
-        private static readonly string UPDATE = "UPDATE utilisateur SET nom=@nom, prenom=@prenom, dateNaissance=@dateNaissance, codePostal=@codePostal, ville=@ville, rue=@rue, numero=@numero, gsm=@gsm, email=@email, pseudo=@pseudo, mdp=@mdp";
+        private static readonly string UPDATE = "UPDATE utilisateur SET nom=@nom, prenom=@prenom, dateNaissance=@dateNaissance, codePostal=@codePostal, ville=@ville, rue=@rue, numero=@numero, gsm=@gsm, email=@email, mdp=@mdp, admin=@admin";
 
         public static List<Utilisateur> GetAllUtilisateurs()
         {
@@ -37,7 +37,8 @@ namespace DrinkAlcool.Models
                                                             reader.GetInt32(8),
                                                             reader.GetString(9),
                                                             reader.GetString(10),
-                                                            reader.GetString(11)));
+                                                            reader.GetBoolean(11)
+                                                            ));
                 }
             }
 
@@ -67,7 +68,7 @@ namespace DrinkAlcool.Models
                                         reader.GetInt32(8),
                                         reader.GetString(9),
                                         reader.GetString(10),
-                                        reader.GetString(11));
+                                        reader.GetBoolean(11));
                 }
             }
 
@@ -90,8 +91,8 @@ namespace DrinkAlcool.Models
                 command.Parameters.AddWithValue("@numero", user.Numero);
                 command.Parameters.AddWithValue("@gsm", user.Gsm);
                 command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@pseudo", user.Pseudo);
                 command.Parameters.AddWithValue("@mdp", user.MDP);
+                command.Parameters.AddWithValue("@admin", user.Admin);
 
                 user.Id = (int)command.ExecuteScalar();
             }
@@ -117,8 +118,8 @@ namespace DrinkAlcool.Models
                 command.Parameters.AddWithValue("@numero", user.Numero);
                 command.Parameters.AddWithValue("@gsm", user.Gsm);
                 command.Parameters.AddWithValue("@email", user.Email);
-                command.Parameters.AddWithValue("@pseudo", user.Pseudo);
                 command.Parameters.AddWithValue("@mdp", user.MDP);
+                command.Parameters.AddWithValue("@admin", user.Admin);
 
                 aEteModifie = command.ExecuteNonQuery() != 0;
             }
