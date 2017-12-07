@@ -9,9 +9,8 @@ namespace DrinkAlcool.Models
     public class CommandeDAO 
     {
         private static readonly string QUERY = "SELECT * FROM commande";
-        private static readonly string GET = QUERY + " where id=@id";
-        //private static readonly string CREATE = "INSERT INTO produit(nom, prix, stock, urlImage, description, pourcentage) OUTPUT INSERTED.id VALUES (@nom, @prix, @stock, @urlImage, @description, @pourcentage)";
-        private static readonly string CREATE = "INSERT INTO commande(idUtilisateur,nom, prix, stock, urlImage) OUTPUT INSERTED.id VALUES (@idUtilisateur,@nom, @prix, @stock, @urlImage)";
+        private static readonly string GET = QUERY + "WHERE id=@id";
+        private static readonly string CREATE = "INSERT INTO commande(idUtilisateur, idProduit, total, quantite, numerocommande) OUTPUT INSERTED.id VALUES (@idUtilisateur, @idProduit, @total, @quantite, @numerocommande)";
         private static readonly string DELETE = "DELETE from commande where id=@id";
 
         public static List<Commande> GetAllCommande()
@@ -29,17 +28,18 @@ namespace DrinkAlcool.Models
 
                     listeCommandes.Add(new Commande(reader.GetInt32(0),
                                                     reader.GetInt32(1),
-                                                    reader.GetString(2),
+                                                    reader.GetInt32(2),
                                                     reader.GetDecimal(3),
                                                     reader.GetInt32(4),
-                                                    reader.GetString(5)));
+                                                    reader.GetInt32(5)
+                                                    ));
                 }
             }
 
             return listeCommandes;
         }
 
-        public static Commande Get(int id)
+        public static Commande Get(int id)  // fonctionne pas
         {
             Commande com = null;
 
@@ -53,10 +53,9 @@ namespace DrinkAlcool.Models
                 {
                     com = new Commande(reader.GetInt32(0),
                                         reader.GetInt32(1),
-                                        reader.GetString(2),
-                                        reader.GetDecimal(3),
-                                        reader.GetInt32(4),
-                                        reader.GetString(5)
+                                        reader.GetDecimal(2),
+                                        reader.GetInt32(3),
+                                        reader.GetInt32(4)
                                        );
                 }
             }
@@ -70,17 +69,17 @@ namespace DrinkAlcool.Models
                 conn.Open();
                 SqlCommand command = new SqlCommand(CREATE, conn);
                 command.Parameters.AddWithValue("@idUtilisateur", prod.IdUtilisateur);
-                command.Parameters.AddWithValue("@nom", prod.Nom);
-                command.Parameters.AddWithValue("@prix", prod.Prix);
-                command.Parameters.AddWithValue("@stock", prod.Stock);
-                command.Parameters.AddWithValue("@urlImage", prod.UrlImage);
+                command.Parameters.AddWithValue("@idProduit", prod.IdProduit);
+                command.Parameters.AddWithValue("@total", prod.Total);
+                command.Parameters.AddWithValue("@quantite", prod.Quantite);
+                command.Parameters.AddWithValue("@numerocommande", prod.NumeroCommande);
 
                 prod.Id = (int)command.ExecuteScalar();
             }
             return prod;
         }
 
-        public static bool Delete(int id)
+        public static bool Delete(int id)   // pas test
         {
             bool estSupprime = false;
             using (SqlConnection conn = DataBase.GetConnection())

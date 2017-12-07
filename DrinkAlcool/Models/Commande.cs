@@ -10,17 +10,17 @@ namespace DrinkAlcool.Models
     {
         public Commande() {}
 
-        public Commande(int id,int idUtilisateur,string nom, Decimal prix, int stock, string urlImage)
+        public Commande(int id, int idUtilisateur, int idProduit, Decimal total, int quantite, int numerocommande)
         {
             Id = id;
             IdUtilisateur = idUtilisateur;
-            Nom = nom;
-            Prix = prix;
-            Stock = stock;
-            UrlImage = urlImage;
+            IdProduit = idProduit;
+            Total = total;
+            Quantite = quantite;
+            NumeroCommande = numerocommande;
         }
 
-        public Commande(int idUtilisateur, string nom, Decimal prix, int stock, string urlImage) : this(0,idUtilisateur, nom, prix, stock, urlImage) { }
+        public Commande(int idUtilisateur, int idProduit, Decimal total, int quantite, int numerocommande) : this(0, idUtilisateur, idProduit, total, quantite, numerocommande) { }
 
         public int Id
         {
@@ -33,30 +33,31 @@ namespace DrinkAlcool.Models
             get;
             set;
         }
-
-        public string Nom
+        
+        public int IdProduit
         {
             get;
             set;
         }
 
-        public Decimal Prix
+        public Decimal Total
         {
             get;
             set;
         }
 
-        public int Stock
+        public int Quantite
         {
             get;
             set;
         }
 
-        public string UrlImage
+        public int NumeroCommande
         {
             get;
             set;
         }
+
 
     }
 }
